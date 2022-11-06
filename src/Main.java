@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 public class Main {
     public static final int MONTHS_COUNT = 3;
@@ -9,6 +10,7 @@ public class Main {
 
         MonthReport mReport = new MonthReport();
         YearlyReport report = new YearlyReport(2021, "resources/y.2021.csv");
+        Collation collation = new Collation();
 
 
         while (userInput != 0) {
@@ -16,7 +18,7 @@ public class Main {
             if (userInput == 1) {
                 // Считать месячные отчеты
                 for(int c = 1; c <= MONTHS_COUNT; c++) {
-                    mReport.MonthReport(c);
+                    mReport.GetMonthReport(c);
                 }
 
                 System.out.println("Отчеты считаны");
@@ -27,9 +29,9 @@ public class Main {
                 System.out.println("Отчет считан");
 
 
-           // } else if (userInput == 3) {
+            } else if (userInput == 3) {
                 //Сверить отчеты
-
+                collation.Compare();
             }  else if (userInput == 4) {
             //Вывести информацию о всех месячных отчётах
                 mReport.getMonthReport();
@@ -52,7 +54,7 @@ public class Main {
         System.out.println("3 - Сверить отчеты");
         System.out.println("4 - Вывести информацию о всех месячных отчётах");
         System.out.println("5 - Вывести информацию о годовом отчёте");
-        System.out.println("0 - Выход"); // TODO: exit
+        System.out.println("0 - Выход");
 
     }
 
