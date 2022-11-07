@@ -36,7 +36,7 @@ public class YearlyReport {
         }
 
     }
-    public void GetYearlyReport(){
+    public void getYearlyReport(){
         System.out.println("Отчет за " + year + " год:");
         sumProfit();
         System.out.println("Средний расход: " + averageExpense());

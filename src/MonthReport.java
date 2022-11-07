@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
  public class MonthReport {
-     public HashMap<String, ArrayList<Integer>> monthOne = GetMonthReport(1);
-     public HashMap<String, ArrayList<Integer>> monthTwo = GetMonthReport(2);
-     public HashMap<String, ArrayList<Integer>> monthThree = GetMonthReport(3);
+     public HashMap<String, ArrayList<Integer>> monthOne = reedMonthReport(1);
+     public HashMap<String, ArrayList<Integer>> monthTwo = reedMonthReport(2);
+     public HashMap<String, ArrayList<Integer>> monthThree = reedMonthReport(3);
 
 
-     public HashMap GetMonthReport(int c){
+     public HashMap reedMonthReport(int c){
          HashMap<String, ArrayList<Integer>> monthContents = new HashMap<>();
          String monthPath = "resources/m.20210" + c + ".csv";
          String content = readFileContentsOrNull(monthPath);

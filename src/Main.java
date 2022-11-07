@@ -18,7 +18,7 @@ public class Main {
             if (userInput == 1) {
                 // Считать месячные отчеты
                 for(int c = 1; c <= MONTHS_COUNT; c++) {
-                    mReport.GetMonthReport(c);
+                    mReport.reedMonthReport(c);
                 }
 
                 System.out.println("Отчеты считаны");
@@ -38,7 +38,7 @@ public class Main {
 
             }  else if (userInput == 5) {
                 //Вывести информацию о годовом отчёте
-                report.GetYearlyReport();
+                report.getYearlyReport();
 
         }else System.out.println("Извините, такой команды пока нет");
             printMenu(); // печатаем меню ещё раз перед завершением предыдущего действия

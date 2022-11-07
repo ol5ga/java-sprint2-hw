@@ -6,12 +6,12 @@ public class Collation {
 
     MonthReport mReport = new MonthReport();
     YearlyReport yReport = new YearlyReport(2021, "resources/y.2021.csv");
-    int incomeOne = SumIncome(mReport.monthOne);
-    int incomeTwo = SumIncome(mReport.monthTwo);
-    int incomeThree = SumIncome(mReport.monthThree);
-    int expenseOne = SumExpense(mReport.monthOne);
-    int expenseTwo = SumExpense(mReport.monthTwo);
-    int expenseThree = SumExpense(mReport.monthThree);
+    int incomeOne = sumIncome(mReport.monthOne);
+    int incomeTwo = sumIncome(mReport.monthTwo);
+    int incomeThree = sumIncome(mReport.monthThree);
+    int expenseOne = sumExpense(mReport.monthOne);
+    int expenseTwo = sumExpense(mReport.monthTwo);
+    int expenseThree = sumExpense(mReport.monthThree);
     YearlyReportMonth monthOne = yReport.monthsData.get(1);
     YearlyReportMonth monthTwo = yReport.monthsData.get(2);
     YearlyReportMonth monthThree = yReport.monthsData.get(3);
@@ -29,7 +29,7 @@ public class Collation {
 
 
 
-    public int SumIncome(HashMap<String, ArrayList<Integer>> monthreport){
+    public int sumIncome(HashMap<String, ArrayList<Integer>> monthreport){
         int sum =0;
         for (String income: monthreport.keySet()){
             ArrayList<Integer> value = monthreport.get(income);
@@ -40,7 +40,7 @@ public class Collation {
         } return sum;
     }
 
-    public int SumExpense(HashMap<String, ArrayList<Integer>> monthreport){
+    public int sumExpense(HashMap<String, ArrayList<Integer>> monthreport){
         int sum =0;
         for (String income: monthreport.keySet()){
             ArrayList<Integer> value = monthreport.get(income);
