@@ -6,15 +6,16 @@ import java.util.HashMap;
 
  public class MonthReport {
 
-     Item item = new Item();
-     OneMonthReport oneReport = new OneMonthReport(0);
-     public HashMap <Integer, HashMap<String, ArrayList<Integer>>> monthReports = new HashMap<>();
+     //Item item = new Item();
+     //OneMonthReport oneReport = new OneMonthReport(0);
+     public ArrayList<HashMap<String, ArrayList<Integer>>> monthReports = new ArrayList<>();
 
      public void reedMonthReport(){
-         HashMap<String, Item> monthContents = new HashMap<>();
+        // HashMap<String, ArrayList<Integer>> monthContents = new HashMap<>();
          ArrayList<Integer> monthValues = new ArrayList<>();
 
          for(int m = 1; m <= 3; m++) {
+             HashMap<String, ArrayList<Integer>> monthContents = new HashMap<>();
          String monthPath = "resources/m.20210" + m + ".csv";
          String content = readFileContentsOrNull(monthPath);
              if (content == null) {
@@ -31,24 +32,20 @@ import java.util.HashMap;
              boolean isExpense = Boolean.parseBoolean(parts[1]);
              int quantity = Integer.parseInt(parts[2]);
              int sumOfOne = Integer.parseInt(parts[3]);
-             //if (isExpense) {
-               //  monthValues.add(0);
-            // } else monthValues.add(1);
-             item = new Item();
-             item.isExpense = isExpense;
-             item.qty = quantity;
-             item.SumOfOne = sumOfOne;
-             //monthValues.add(quantity);
-             //monthValues.add(sumOfOne);
-             monthContents.put(itemName, item);
+             if (isExpense) {
+                 monthValues.add(0);
+             } else monthValues.add(1);
+             monthValues.add(quantity);
+             monthValues.add(sumOfOne);
+             monthContents.put(itemName, monthValues);
 
 
 
-         } oneReport.month = m;
-             oneReport.monthReports = monthContents;
+         } monthReports.add(monthContents);
 
 
-        System.out.println(oneReport.monthReports);
+
+
 
         }
          //return monthContents;
@@ -58,7 +55,7 @@ import java.util.HashMap;
 
          System.out.println("Месяный отчет:");
          System.out.println("Месяц 1 - январь: ");
-            System.out.println("Самый прибыльный товар: " + findMaxIncome(oneReport.monthReports));
+            System.out.println("Самый прибыльный товар: " + findMaxIncome(monthReports.get(0)));
             System.out.println("Самая большая трата: " + findMaxExpense(monthReports.get(0)));
          System.out.println("Месяц 2 - февраль: ");
              System.out.println("Самый прибыльный товар: " + findMaxIncome(monthReports.get(1)));
@@ -69,7 +66,7 @@ import java.util.HashMap;
 
 
      }
-     public HashMap<String,Integer> findMaxIncome (HashMap<String, Item> monthContents){
+     public HashMap<String,Integer> findMaxIncome (HashMap<String, ArrayList<Integer>> monthContents){
          HashMap<String,Integer> MaxIncome = new HashMap<>();
          int isExpense = 0;
          String key = " ";
