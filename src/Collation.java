@@ -5,18 +5,22 @@ import java.util.HashMap;
 public class Collation {
 
     MonthReport mReport = new MonthReport();
-    YearlyReport yReport = new YearlyReport(2021, "resources/y.2021.csv");
-    int incomeOne = sumIncome(mReport.monthOne);
-    int incomeTwo = sumIncome(mReport.monthTwo);
-    int incomeThree = sumIncome(mReport.monthThree);
-    int expenseOne = sumExpense(mReport.monthOne);
-    int expenseTwo = sumExpense(mReport.monthTwo);
-    int expenseThree = sumExpense(mReport.monthThree);
+    YearlyReport yReport = new YearlyReport();
+
+
+    int incomeOne = sumIncome(mReport.monthReports.get(1));
+    int incomeTwo = sumIncome(mReport.monthReports.get(2));
+    int incomeThree = sumIncome(mReport.monthReports.get(3));
+    int expenseOne = sumExpense(mReport.monthReports.get(1));
+    int expenseTwo = sumExpense(mReport.monthReports.get(2));
+    int expenseThree = sumExpense(mReport.monthReports.get(3));
+
     YearlyReportMonth monthOne = yReport.monthsData.get(1);
     YearlyReportMonth monthTwo = yReport.monthsData.get(2);
     YearlyReportMonth monthThree = yReport.monthsData.get(3);
 
     public void Compare(){
+        // if (!yReport.monthsData.isEmpty()){
     if ((incomeOne == monthOne.income) && (expenseOne == monthOne.expenses)) {
         if ((incomeTwo == monthTwo.income) && (expenseTwo == monthTwo.expenses)){
             if ((incomeThree == monthThree.income) && (expenseThree == monthThree.expenses)) {
@@ -24,6 +28,7 @@ public class Collation {
             } else {System.out.println("Обнаружено несоответствие в месяце" + monthThree.month);}
         } else {System.out.println("Обнаружено несоответствие в месяце" + monthTwo.month);}
     } else {System.out.println("Обнаружено несоответствие в месяце" + monthOne.month);}
+    //} else {System.out.println("Годовой отчет не считан");}
 
     }
 

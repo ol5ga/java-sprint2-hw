@@ -8,10 +8,13 @@ public class YearlyReport {
     public HashMap<Integer, YearlyReportMonth> monthsData = new HashMap<>();
 
 
-    public YearlyReport(int year, String path) {
-        this.year = year;
+    public void reedYearlyReport(String path) {
+
 
         String content = readFileContentsOrNull(path); // << содержимое файла
+        if (content == null) {
+            return;
+        } else {System.out.println("Отчет считан");}
         String[] lines = content.split("\r?\n"); // массив строк
 
         for (int i = 1; i < lines.length; i++) {
@@ -37,10 +40,14 @@ public class YearlyReport {
 
     }
     public void getYearlyReport(){
-        System.out.println("Отчет за " + year + " год:");
-        sumProfit();
-        System.out.println("Средний расход: " + averageExpense());
-        System.out.println("Средний доход: " + averageIncome());
+        if (!monthsData.isEmpty()) {
+            System.out.println("Отчет за год:");
+            sumProfit();
+            System.out.println("Средний расход: " + averageExpense());
+            System.out.println("Средний доход: " + averageIncome());
+        } else {
+            System.out.println("Отчет не считан");
+        }
 
     }
 

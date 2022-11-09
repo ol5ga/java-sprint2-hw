@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
  public class MonthReport {
-     public HashMap<String, ArrayList<Integer>> monthOne = reedMonthReport(1);
-     public HashMap<String, ArrayList<Integer>> monthTwo = reedMonthReport(2);
-     public HashMap<String, ArrayList<Integer>> monthThree = reedMonthReport(3);
 
+     public ArrayList<HashMap<String, ArrayList<Integer>>> monthReports = new ArrayList<>();
 
-     public HashMap reedMonthReport(int c){
+     public void reedMonthReport(){
          HashMap<String, ArrayList<Integer>> monthContents = new HashMap<>();
-         String monthPath = "resources/m.20210" + c + ".csv";
+         for(int m = 1; m <= 3; m++) {
+         String monthPath = "resources/m.20210" + m + ".csv";
          String content = readFileContentsOrNull(monthPath);
+             if (content == null) {
+                 return;
+             } else {System.out.println("Отчеты считаны");}
         String[] lines = content.split("\r?\n"); // массив строк
 
          for (int i = 1; i < lines.length; i++) {
@@ -32,25 +34,32 @@ import java.util.HashMap;
              monthContents.put(itemName, monthValues);
 
 
-        } return monthContents;
+
+         } monthReports.add(monthContents);
+
+        } System.out.println(monthReports.get(0));
+         System.out.println(monthReports.get(1));
+         System.out.println(monthReports.get(2));
+         //return monthContents;
      }
 
      public void getMonthReport(){
+
          System.out.println("Месяный отчет:");
          System.out.println("Месяц 1 - январь: ");
-            System.out.println("Самый прибыльный товар: " + findMaxIncome(monthOne));
-            System.out.println("Самая большая трата: " + findMaxExpense(monthOne));
+            System.out.println("Самый прибыльный товар: " + findMaxIncome(monthReports.get(0)));
+            System.out.println("Самая большая трата: " + findMaxExpense(monthReports.get(0)));
          System.out.println("Месяц 2 - февраль: ");
-             System.out.println("Самый прибыльный товар: " + findMaxIncome(monthTwo));
-             System.out.println("Самая большая трата: " + findMaxExpense(monthTwo));
+             System.out.println("Самый прибыльный товар: " + findMaxIncome(monthReports.get(1)));
+             System.out.println("Самая большая трата: " + findMaxExpense(monthReports.get(1)));
          System.out.println("Месяц 3 - март: ");
-            System.out.println("Самый прибыльный товар: " + findMaxIncome(monthThree));
-            System.out.println("Самая большая трата: " + findMaxExpense(monthThree));
+            System.out.println("Самый прибыльный товар: " + findMaxIncome(monthReports.get(2)));
+            System.out.println("Самая большая трата: " + findMaxExpense(monthReports.get(2)));
 
 
      }
      public HashMap<String,Integer> findMaxIncome (HashMap<String, ArrayList<Integer>> monthContents){
-         HashMap<String,Integer>MaxIncome = new HashMap<>();
+         HashMap<String,Integer> MaxIncome = new HashMap<>();
          int isExpense = 0;
          String key = " ";
          int sum = 0;
