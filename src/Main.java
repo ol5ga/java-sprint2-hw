@@ -24,7 +24,7 @@ public class Main {
             // обработка разных случаев
             if (userInput == 1) {
                 // Считать месячные отчеты
-                mReport.reedMonthReport(MONTHS_COUNT);
+                mReport.reedMonthReport();
 
 
             } else if (userInput == 2) {
