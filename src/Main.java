@@ -17,14 +17,14 @@ public class Main {
 
         MonthReport mReport = new MonthReport();
         YearlyReport report = new YearlyReport();
-        //Collation collation = new Collation();
+        Collation collation = new Collation();
 
 
         while (userInput != 0) {
             // обработка разных случаев
             if (userInput == 1) {
                 // Считать месячные отчеты
-                mReport.reedMonthReport();
+                mReport.reedMonthReport(MONTHS_COUNT);
 
 
             } else if (userInput == 2) {
@@ -34,7 +34,7 @@ public class Main {
 
             } else if (userInput == 3) {
                 //Сверить отчеты
-                //collation.Compare();
+                collation.compare();
             } else if (userInput == 4) {
                 //Вывести информацию о всех месячных отчётах
                 mReport.getMonthReport();

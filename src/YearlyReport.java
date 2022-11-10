@@ -4,9 +4,9 @@ import java.nio.file.Path;
 import java.util.HashMap;
 
 public class YearlyReport {
-    int year;
-    public HashMap<Integer, YearlyReportMonth> monthsData = new HashMap<>();
 
+    public HashMap<Integer, YearlyReportMonth> monthsData = new HashMap<>();
+public int p = 10;
 
     public void reedYearlyReport(String path) {
 
