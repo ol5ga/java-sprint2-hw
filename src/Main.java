@@ -1,9 +1,5 @@
 
 import java.util.Scanner;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class Main {
@@ -20,12 +16,12 @@ public class Main {
         Collation collation = new Collation();
 
 
+
         while (userInput != 0) {
             // обработка разных случаев
             if (userInput == 1) {
                 // Считать месячные отчеты
                 mReport.reedMonthReport(MONTHS_COUNT);
-
 
             } else if (userInput == 2) {
                 // Считать годовой отчет
@@ -34,14 +30,14 @@ public class Main {
 
             } else if (userInput == 3) {
                 //Сверить отчеты
-                collation.compare();
+                collation.compare(mReport.monthReport, report.monthsData);
             } else if (userInput == 4) {
                 //Вывести информацию о всех месячных отчётах
-                mReport.getMonthReport();
+                mReport.printMonthReport();
 
             } else if (userInput == 5) {
                 //Вывести информацию о годовом отчёте
-                report.getYearlyReport();
+                report.printYearlyReport();
 
             } else System.out.println("Извините, такой команды пока нет");
             printMenu(); // печатаем меню ещё раз перед завершением предыдущего действия

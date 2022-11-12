@@ -5,8 +5,11 @@ import java.util.HashMap;
 
 public class YearlyReport {
 
-    public HashMap<Integer, YearlyReportMonth> monthsData = new HashMap<>();
-public int p = 10;
+    public HashMap<Integer, YearlyReportMonth> monthsData;
+
+    public YearlyReport() {
+        monthsData = new HashMap<>();
+    }
 
     public void reedYearlyReport(String path) {
 
@@ -39,7 +42,7 @@ public int p = 10;
         }
 
     }
-    public void getYearlyReport(){
+    public void printYearlyReport(){
         if (!monthsData.isEmpty()) {
             System.out.println("Отчет за год:");
             sumProfit();

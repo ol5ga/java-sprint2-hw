@@ -5,9 +5,15 @@ import java.util.HashMap;
 
 public class MonthReport {
 
-    int month;
-    HashMap<Integer, HashMap<String, Item>> monthReport = new HashMap<>();
-    Item tem = new Item();
+
+    public HashMap<Integer, HashMap<String, Item>> monthReport;
+
+
+    public MonthReport() {
+        monthReport = new HashMap<>();
+
+    }
+
     public void reedMonthReport(int c){
 
         for(int m = 1; m <= c; m++) {
@@ -37,7 +43,7 @@ public class MonthReport {
         }
     }
 
-    public void getMonthReport(){
+    public void printMonthReport(){
         if (!monthReport.isEmpty()) {
             System.out.println("Месяный отчет:");
             System.out.println("Месяц 1 - январь: ");
