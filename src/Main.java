@@ -9,6 +9,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         printMenu();
+
         int userInput = scanner.nextInt();
 
         MonthReport mReport = new MonthReport();
